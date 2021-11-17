@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accio Assignment</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script>
+        let body = document.getElementsByTagName('body')[0];
+        body.style.backgroundColor = "lightgray";
+
+        var root = document.getElementById("root");
+
+        let p = document.createElement("p");
+        p.style.border = "1px solid black";
+        p.style.backgroundColor = "white";
+        p.style.padding = "20px";
+        p.innerHTML = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
+        root.append(p);
+
+        let btncontainer = document.createElement("div");
+
+        btncontainer.style.minHeight = "100px";
+        btncontainer.style.maxWidth = "1200px";
+        btncontainer.style.margin = "auto";
+        btncontainer.style.width = "100%";
+        btncontainer.style.display = "flex";
+        btncontainer.style.flexWrap = "wrap";
+        btncontainer.style.justifyContent = "space-between";
+
+        let buttonList = ["red", "green", "blue", "10px", "20px", "30px", "Arial", "Ubuntu", "Segoe UI"];
+
+        root.append(btncontainer);
+        for (let i = 0; i < buttonList.length; i++) {
+            let btn = document.createElement("button");
+            btn.style.margin = "5px";
+            btn.style.padding = "5px";
+            btn.accessKey = i;
+            btn.addEventListener("click", (e) => change(e));
+            btn.style.width = "30%";
+            btn.innerHTML = buttonList[i];
+            btncontainer.append(btn);
+        }
+
+        function change(e) {
+            if (Number(e.target.accessKey) <= 2) {
+                p.style.color = e.target.innerHTML;
+            } else if (Number(e.target.accessKey) <= 5) {
+                p.style.fontSize = e.target.innerHTML;
+            } else {
+                p.style.fontFamily = e.target.innerHTML;
+            }
+        }
+    </script>
+</body>
+
+</html>
